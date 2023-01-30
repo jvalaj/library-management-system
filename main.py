@@ -32,35 +32,38 @@ class Library:
         for book in self.books:
             print(f"{book.title} by {book.author}")
 
-print("Hello, Welcome to the most efficient Library Management System! You can do the following: \n 1. List of Books Available \n 2. Return A book \n 3. Add a book")
-ans = input("enter what you want to do")
-
 # create library
 library = Library()
 
-# create books
-book1 = Book("War and Peace", "Leo Tolstoy", "123456789")
-book2 = Book("Moby Dick", "Herman Melville", "987654321")
-book3 = Book("Pride and Prejudice", "Jane Austen", "555666777")
+print("Hello, Welcome to the most efficient Library Management System!")
+print("You can do the following: \n 1. List of Books Available \n 2. Add A book \n 3. Add a book")
+anss = "Y"
+while True:    
+    if anss in "yY":
+        ans = input("enter what you want to do")
 
-# add books to library
-library.add_book(book1)
-library.add_book(book2)
-library.add_book(book3)
+        # list books in library
+        if ans == 1:
+            library.list_books()
+        elif ans == 2:
+            # create books
+            btitle = input("enter title")
+            bauthor = input("enter author")
+            bnumber = input("enter number")
+            book1 = Book(btitle,bauthor,bnumber)
+            # add books to library
+            library.add_book(book1)
+        elif ans == 3:
+            # borrow books
+            book1.borrow_book()
+    else:
+        break
+    anss= input("do you want to continue? enter Y for yes, N for no")
 
-# list books in library
-library.list_books()
-
-# borrow books
-book1.borrow_book()
-book2.borrow_book()
 
 # try to borrow already borrowed book
 book2.borrow_book()
 
-# list books in library
-if ans == 1:
-    library.list_books()
 
 # return books
 book1.return_book()

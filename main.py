@@ -5,12 +5,12 @@ class Book:
         self.ISBN = ISBN
         self.borrowed = False
 
-    def borrow_book(self):
-        if not self.borrowed:
-            self.borrowed = True
-            print(f"Book {self.title} by {self.author} has been borrowed.")
-        else:
-            print(f"Book {self.title} by {self.author} is already borrowed.")
+    def borrow_book(self,title,author):
+            if not self.borrowed:
+                self.borrowed = True
+                print(f"Book {self.title} by {self.author} has been borrowed.")
+            else:
+                print(f"Book {self.title} by {self.author} is already borrowed.")
 
     def return_book(self):
         if self.borrowed:
@@ -31,7 +31,8 @@ class Library:
         print("List of books in the library:")
         if len(self.books) > 0:
             for book in self.books:
-                print({book.title}+"by ping pong"+{book.author})
+                print(book)
+                print(f" {book.title} by {book.author}")
         else:
             print("Library is Empty!")
 
@@ -39,7 +40,7 @@ class Library:
 library = Library()
 
 print("Hello, Welcome to the most efficient Library Management System!")
-print("You can do the following: \n 1. List of Books Available \n 2. Add A book \n 3 Borrow a book \n 4. Return a book")
+print("You can do the following: \n 1. List of Books Available \n 2. Add A book \n 3. Borrow a book \n 4. Return a book")
 anss = "Y"
 while True:    
     if anss in "yY":
@@ -60,7 +61,9 @@ while True:
             # borrow books
             btitle = input("enter title of book to be borrowed")
             bauthor = input("enter author")
-            book1.borrow_book()
+            for book in library.books:
+                if btitle == book
+                book1.borrow_book()
         elif ans == 4:
             # return books
             btitle = input("enter title of book to be returned")

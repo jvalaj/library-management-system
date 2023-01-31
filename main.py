@@ -5,9 +5,9 @@ class Book:
         self.ISBN = ISBN
         self.borrowed = False
 
-    def borrow_book(self,title,author):
+    def borrow_book(self, book):
             if not self.borrowed:
-                self.borrowed = True
+                book.borrowed = True
                 print(f"Book {self.title} by {self.author} has been borrowed.")
             else:
                 print(f"Book {self.title} by {self.author} is already borrowed.")
@@ -54,21 +54,19 @@ while True:
             btitle = input("enter title")
             bauthor = input("enter author")
             bnumber = input("enter number")
-            book1 = Book(btitle,bauthor,bnumber)
             # add books to library
-            library.add_book(book1)
+            library.add_book(Book(btitle,bauthor,bnumber))
         elif ans == 3:
             # borrow books
             btitle = input("enter title of book to be borrowed")
-            bauthor = input("enter author")
-            for book in library.books:
-                if btitle == book
-                book1.borrow_book()
+            bauthor = input("enter author of the book to be borrowed")
+            bnumber = input("enter number")
+            Book.borrow_book(Book(btitle,bauthor,bnumber))
         elif ans == 4:
             # return books
             btitle = input("enter title of book to be returned")
             bauthor = input("enter author")
-            book1.return_book()
+            Book.return_book()
     else:
         break
     anss= input("do you want to continue? enter Y for yes, N for no")

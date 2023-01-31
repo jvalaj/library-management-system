@@ -3,11 +3,18 @@ class Book:
         self.title = title
         self.author = author
         self.borrowed = False
+    def borrow_book(self):
+            print(book.borrowed)
+            if not book.borrowed:
+                book.borrowed = True
+                print(f"Success! Book {book.title} by {book.author} has been borrowed.")
+            else:
+                print(f"Book {book.title} by {book.author} is already borrowed.")
+
 
 class Library:
     def __init__(self):
-        self.books = [Book("Almanack","Naval"),Book("Power","Hamza")]
-
+        self.books = [Book("a","a"),Book("b","b")]
     def add_book(self, book):
         self.books.append(book)
         print(f"Book {book.title} by {book.author} has been added to the library.")
@@ -20,13 +27,7 @@ class Library:
         else:
             print("Library is Empty!")
 
-    def borrow_book(self, book):
-            if not book.borrowed:
-                book.borrowed = True
-                print(f"Success! Book {book.title} by {book.author} has been borrowed.")
-            else:
-                print(f"Book {book.title} by {book.author} is already borrowed.")
-
+    
     def return_book(self,book):
         if book.borrowed:
             book.borrowed = False
@@ -36,7 +37,6 @@ class Library:
 
 # create library
 library = Library()
-
 print("Hello, Welcome to the most efficient Library Management System!")
 print("You can do the following: \n 1. List of Books Available \n 2. Add A book \n 3. Borrow a book \n 4. Return a book")
 anss = "Y"
@@ -67,7 +67,7 @@ while True:
                     val1 = False
             if val1 == True:
                 book1 = Book(bbtitle,bbauthor)
-                library.borrow_book(book1)
+                Book.borrow_book(book1)
             else:
                 print("Book isn't in the library, consider adding it!")
         elif ans == 4:

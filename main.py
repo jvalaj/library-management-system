@@ -10,6 +10,12 @@ class Book:
                 print(f"Success! Book {book.title} by {book.author} has been borrowed.")
             else:
                 print(f"Book {book.title} by {book.author} is already borrowed.")
+    def return_book(self):
+        if book.borrowed:
+            book.borrowed = False
+            print(f" Book {book.title} by {book.author} has been returned.")
+        else:
+            print(f"Book {book.title} by {book.author} is not currently borrowed.")
 
 
 class Library:
@@ -28,13 +34,7 @@ class Library:
             print("Library is Empty!")
 
     
-    def return_book(self,book):
-        if book.borrowed:
-            book.borrowed = False
-            print(f" Book {book.title} by {book.author} has been returned.")
-        else:
-            print(f"Book {book.title} by {book.author} is not currently borrowed.")
-
+    
 # create library
 library = Library()
 print("Hello, Welcome to the most efficient Library Management System!")
@@ -72,8 +72,20 @@ while True:
                 print("Book isn't in the library, consider adding it!")
         elif ans == 4:
             # return books
-            btitle = input("enter title of book to be returned")
-            bauthor = input("enter author")
+            brtitle = input("enter title of book to be returned")
+            brauthor = input("enter author of book to be returned")
+            val1=False
+            for book in library.books:
+                if book.title == brtitle:
+                    val1 = True
+                    break
+                else:
+                    val1 = False
+            if val1 == True:
+                book1 = Book(brtitle,brauthor)
+                Book.return_book(book1)
+            else:
+                print("Book isn't in the library, consider adding it!")
             library.return_book()
     else:
         break

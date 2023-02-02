@@ -4,4 +4,4 @@ It can perform the following functions:
 2. Adding a new book to the library
 3. Borrowing a Book & Returning a book
 
-This project is exemplifies basic OOP in Python
+This project exemplifies basic OOP in Python

@@ -1,3 +1,10 @@
+import csv
+with open("books.csv",'r') as listofbooks:
+    reader = csv.reader(listofbooks)
+    data=[]
+    for row in reader:
+        data.append(row)
+print(data)
 class Book:
     def __init__(self, title, author):
         self.title = title
@@ -21,6 +28,8 @@ class Book:
 class Library:
     def __init__(self):
         self.books = [Book("a","a"),Book("b","b")]
+        for element in data:
+            self.books.append(Book(element[0],element[1]))
     def add_book(self, book):
         self.books.append(book)
         print(f"Book {book.title} by {book.author} has been added to the library.")
@@ -29,14 +38,15 @@ class Library:
         print("List of books in the library:")
         if len(self.books) > 0:
             for book in self.books:
-                print(f" '{book.title}' - {book.author}")
+                print(f" {book.title} by {book.author}")
         else:
             print("Library is Empty!")
 
     
-    
+
 # create library
 library = Library()
+print(library.books)
 print("Hello, Welcome to the most efficient Library Management System!")
 print("You can do the following: \n 1. List of Books Available \n 2. Add A book \n 3. Borrow a book \n 4. Return a book")
 anss = "Y"

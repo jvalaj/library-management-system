@@ -1,10 +1,10 @@
 import csv
-with open("books.csv",'r') as listofbooks:
-    reader = csv.reader(listofbooks)
+with open("books.csv",'r') as readlistofbooks:
+    reader = csv.reader(readlistofbooks)
     data=[]
     for row in reader:
         data.append(row)
-print(data)
+readlistofbooks.close()
 class Book:
     def __init__(self, title, author):
         self.title = title
@@ -27,7 +27,7 @@ class Book:
 
 class Library:
     def __init__(self):
-        self.books = [Book("a","a"),Book("b","b")]
+        self.books = []
         for element in data:
             self.books.append(Book(element[0],element[1]))
     def add_book(self, book):
@@ -42,13 +42,17 @@ class Library:
         else:
             print("Library is Empty!")
 
-    
+
 
 # create library
 library = Library()
-print(library.books)
+def update_library(btitle,bauthor):
+    with open("books.csv",'a') as writelistofbooks:
+        writer = csv.writer(writelistofbooks)
+        writer.writerow([btitle,bauthor],delimiter="\n")
+    writelistofbooks.close()
 print("Hello, Welcome to the most efficient Library Management System!")
-print("You can do the following: \n 1. List of Books Available \n 2. Add A book \n 3. Borrow a book \n 4. Return a book")
+print("You can do the following: \n 1. List of Books Available \n 2. Add A book \n 3. Search for a book \n 4. Borrow a book \n 5. Return a book")
 anss = "Y"
 while True:    
     if anss in "yY":
@@ -59,12 +63,20 @@ while True:
             library.list_books()
         elif ans == 2:
             # create books
-            btitle = input("enter title")
-            bauthor = input("enter author")
-            bnumber = input("enter number")
+            btitle = input("Enter title of the book to add: ")
+            bauthor = input("Enter author of the book to add: ")
             # add books to library
             library.add_book(Book(btitle,bauthor))
+            update_library(btitle,bauthor)
         elif ans == 3:
+            bftitle = input("Enter title of the book to find: ")
+            bfauthor = input("Enter author of the book to add: ")
+            for book in library.books:
+                if book.title == bftitle:
+                    print("The book has been found! \n",book.title,"by",book.author,"is available!")
+                else:
+                    print("Book isn't available! Consider adding it to the library!")
+        elif ans == 4:
             # borrow books
             bbtitle = input("Enter title of book to be borrowed")
             bbauthor = input("Enter author of the book to be borrowed")
@@ -80,7 +92,7 @@ while True:
                 Book.borrow_book(book1)
             else:
                 print("Book isn't in the library, consider adding it!")
-        elif ans == 4:
+        elif ans == 5:
             # return books
             brtitle = input("enter title of book to be returned")
             brauthor = input("enter author of book to be returned")

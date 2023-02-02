@@ -5,6 +5,7 @@ with open("books.csv",'r') as readlistofbooks:
     for row in reader:
         data.append(row)
 readlistofbooks.close()
+print(data)
 class Book:
     def __init__(self, title, author):
         self.title = title
@@ -47,9 +48,9 @@ class Library:
 # create library
 library = Library()
 def update_library(btitle,bauthor):
-    with open("books.csv",'a') as writelistofbooks:
+    with open("books.csv",'a',newline='') as writelistofbooks:
         writer = csv.writer(writelistofbooks)
-        writer.writerow([btitle,bauthor],delimiter="\n")
+        writer.writerow([btitle,bauthor])
     writelistofbooks.close()
 print("Hello, Welcome to the most efficient Library Management System!")
 print("You can do the following: \n 1. List of Books Available \n 2. Add A book \n 3. Search for a book \n 4. Borrow a book \n 5. Return a book")

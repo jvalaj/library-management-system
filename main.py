@@ -86,7 +86,6 @@ while True:
                 Book.return_book(book1)
             else:
                 print("Book isn't in the library, consider adding it!")
-            library.return_book()
     else:
         break
     anss= input("do you want to continue? enter Y for yes, N for no: ")

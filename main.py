@@ -70,13 +70,17 @@ while True:
             library.add_book(Book(btitle,bauthor))
             update_library(btitle,bauthor)
         elif ans == 3:
-            bftitle = input("Enter title of the book to find: ")
-            bfauthor = input("Enter author of the book to add: ")
+            bfsearch = input("Enter a search term: ")
             for book in library.books:
-                if book.title == bftitle:
-                    print("The book has been found! \n",book.title,"by",book.author,"is available!")
+                if bfsearch.lower() in book.title.lower() or bfsearch.lower() in book.author.lower():
+                    val1 = True
+                    break
                 else:
-                    print("Book isn't available! Consider adding it to the library!")
+                    val1 = False
+            if val1 == True:
+                print("The book has been found! \n",book.title,"by",book.author,"is available!")
+            else:
+                print("Book isn't available! Consider adding it to the library!")
         elif ans == 4:
             # borrow books
             bbtitle = input("Enter title of book to be borrowed")

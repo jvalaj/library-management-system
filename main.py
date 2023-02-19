@@ -26,7 +26,6 @@ class Book:
             print(f"Book {book.title} by {book.author} is not currently borrowed.")
 
 
-#class should not have access to outside data, need to be passed - TM
 class Library:
     def __init__(self):
         self.books = []
